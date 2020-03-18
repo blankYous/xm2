@@ -1,0 +1,112 @@
+@charset "utf-8";
+/* UCENTER COMMON CSS  个人中心公共样式
+** 2019-10-31
+** by Molly
+*/
+.main-container{background:#eeeeee;padding:30px 0;}
+.c_5{color:#555 !important;}
+.c_0{color:#000 !important;}
+.ucenter-container{width: 1280px;margin: 0 auto;font-size: 14px;line-height: 20px;}
+.ucenter-menu{width:280px;height:auto;overflow:hidden;background:#fff;padding-bottom: 20px;}
+.uc-menu-box {margin: 10px 25px;}
+.uc-menu-box>h3 {line-height: 60px;font-size: 17px;color: #555;border-bottom: 1px solid #d3d3d3;}
+.uc-menu-list li {margin-top: 20px;}
+.uc-menu-list li a {color: #999;line-height: 20px;font-size: 15px;}
+.uc-menu-list li a:hover,
+.uc-menu-list li.active a {color: #555;}
+.ucenter-body{width:1200px;height:auto;overflow:hidden;  }
+.uc-box {background: #fff;width: 100%;overflow: hidden;margin-bottom: 20px;color: #999;}
+.uc-box.uc-tips-box {background: #f28984;color: #fff;font-size: 13px;line-height: 22px;padding: 10px 25px;}
+.uc-box-inner {padding: 20px 25px;}
+.uc-page-title,
+.uc-box-title {color: #000;font-size: 25px;height: 50px;line-height: 50px;overflow: hidden;font-weight: 600;}
+.uc-box-title {border-bottom: 1px solid #e8e8e8;padding: 20px 25px;height:90px;}
+.uc-page-title>span {position: relative;}
+.uc-page-title>span.tit-left:after {content: '';position: absolute;top: -7px;left: 0;height: 4px;width: 50px;background: #000;}
+.uc-page-title .tit-right,
+.uc-box-title .tit-right,
+.uc-box-title .tit-small,
+.uc-page-title .tit-small {color: #999;font-size: 14px;font-weight: normal;line-height: 20px;display: inline-block;margin-top: 15px;}
+.uc-page-title a.tit-right {border-bottom: 1px solid #aaa;}
+/* orders */
+table.odr-item {width: 100%;margin-bottom: 10px;border: 2px solid #e6e6e6;}
+.odr-item th {background: #f5f5f5;border-bottom: 1px solid #f5f5f5;}
+.odr-item th.odr-th-1,
+.odr-thead th.odr-th-1{width:500px;}
+.odr-item th.odr-th-2,
+.odr-thead th.odr-th-2{width:200px;}
+.odr-item th.odr-th-3,
+.odr-thead th.odr-th-3{width:230px;}
+.odr-item th .odr-no,
+.odr-item th .odr-time {height: 35px;line-height: 35px;font-size: 13px;text-align: left;padding-left: 15px;color: #000;}
+.odr-item th .odr-time{text-align: right;color: #999;padding-left: 0; padding-right: 15px;}
+.odr-item td {border: 1px solid #ccc;text-align: center;}
+.odr-item td .odr-goods {width: 100%;border-bottom: 1px solid #ccc;padding: 10px 0;}
+.odr-item td .odr-goods:last-child{border-bottom: 0;}
+.odr-item td .odr-goods-img,
+.odr-item td .odr-goods-infos{display:inline-block;width: 120px;position: relative;}
+.odr-item td .goods-tag {position: absolute;height: 20px;line-height: 20px;font-size: 12px;color: #fff;background: #d00;top: 0;left: 10px;padding: 0 5px;border-radius: 1px;}
+.odr-item td .odr-goods-infos {width: 370px;text-align: left;font-size: 14px;line-height: 24px;color: #999;}
+.odr-item td .odr-goods-price {margin-left: 30px;}
+.odr-item td .odr-goods-img a,
+.odr-item td .odr-goods-img img {display: block;width: 100px;height: auto;margin: 0 auto;}
+.odr-item td.odr-pay-status {padding-bottom: 80px;position: relative;min-height: 150px;}
+.odr-item td .odr-pay-info {position: absolute;height: 80px;left: 0;width: 100%;bottom: 0;}
+.odr-item td .odr-pay-info>p {height: 40px;line-height: 40px;overflow: hidden;color: #999;border-top: 1px solid #f6f6f6;}
+.odr-item td .odr-status {height: 70px;padding: 20px 0;color:#555;}
+.odr-item td .odr-status i{display:inline-block;vertical-align: middle;height:30px;width:30px;background-repeat:no-repeat;background-size:30px auto;background-position:center;margin-right:10px;}
+.odr-item td .odr-sts-aftersale {background-image: url(https://anta-cn-web.obs.myhwclouds.com/theme/images/antacn/icons/order-aftersale-b.svg);}
+.odr-item td .odr-sts-cancel {background-image: url(https://anta-cn-web.obs.myhwclouds.com/theme/images/antacn/icons/order-cancel-b.svg);}
+.odr-item td .odr-sts-finished {background-image: url(https://anta-cn-web.obs.myhwclouds.com/theme/images/antacn/icons/order-finished-b.svg);}
+.odr-item td .odr-sts-undelivery {background-image: url(https://anta-cn-web.obs.myhwclouds.com/theme/images/antacn/icons/order-undelivery-b.svg);}
+.odr-item td .odr-sts-unpay {background-image: url(https://anta-cn-web.obs.myhwclouds.com/theme/images/antacn/icons/order-unpay-b.svg);}
+.odr-item td .odr-sts-unreceive {background-image: url(https://anta-cn-web.obs.myhwclouds.com/theme/images/antacn/icons/order-unreceive-b.svg);}
+.odr-item td .odr-operate {max-width: 230px;}
+.odr-item td .odr-op-link,
+.odr-item td .odr-op-btn{display: inline-block;max-width: 80%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.odr-item td .odr-op-link {line-height: 24px;height: 24px;margin: 2px 0;font-size: 14px;color: #777;border-bottom: 1px solid transparent;}
+.odr-item td .odr-op-link:hover {color: #000;border-bottom: 1px solid #333;}
+.odr-item td .odr-op-btn {height: 28px;line-height: 28px;background: #000;color: #fff;font-size: 14px;padding: 0 25px;}
+.odr-item td .odr-op-payfor{background: #ed4025;}
+/**/
+.list-empty {text-align: center;padding: 40px 0;}
+.list-empty-inner {display: inline-block;height: 70px;line-height: 70px;}
+.list-empty-inner>* {display: inline-block;vertical-align: middle;width: auto;height: 70px;color: #999;font-size: 15px;}
+/* 物流信息弹窗*/
+.logistics-infos {display: none;position: fixed;top: 50%;left: 50%;background: #fff;box-shadow: 0 0 10px 0 #ddd;width: 800px;margin-left: -400px;height: 500px;margin-top: -250px;overflow: hidden;padding: 0 20px;}
+.logistics-infos.active {display: block;}
+.logistics-hd {height: 60px;line-height: 60px;border-bottom: 1px solid #e6e6e6;font-size: 18px;color: #000;}
+.logistics-close {float: right;display: block;height: 20px;width: 20px;background: url(https://anta-cn-web.obs.myhwclouds.com/theme/images/icons/close-cr-bw.svg) no-repeat;background-size: 100% auto;background-position: center;margin-top: 20px;}
+.logistics-user,
+.logistics-progress {height: 370px;overflow-y: auto;margin-top: 10px;margin-bottom: 10px;}
+.logistics-user {width: 300px;margin-right: 20px;}
+.logistics-user>div{border-top: 1px solid #e6e6e6;padding: 10px 0 10px 10px;margin-top:10px;}
+.logistics-user>div.logistics-package{border-top:0;cursor: pointer;padding-right: 20px;margin-top:0;}
+.logistics-user>div.logistics-package.active{background: #f6f6f6;position: relative;}
+.logistics-user>div.logistics-package.active:after {content: '';position: absolute;height: 8px;width: 8px;border-radius: 50%;background: #9fd06e;top: 50%;right: 10px;margin-top: -4px;}
+.logistics-user p {padding: 3px 0;}
+.logistics-user span.infos-label {width: 75px;}
+.logistics-user span.infos-value {width: 190px;}
+.logistics-progress {width: 440px;background: #f4f4f4;padding: 10px 20px;font-size: 12px;color: #999;line-height: 18px;}
+.logistics-progress h5 {font-size: 14px;color: #000;height: 30px;line-height: 30px;}
+.logistics-empty {margin-left: 60px;line-height: 22px;color: #000;}
+.logistics-list{margin-left: 60px;}
+.logistics-list li {list-style: initial;margin-bottom: 8px;}
+.logistics-list li.active {color: #000;}
+.logistics-ft {height: 50px;line-height: 50px;font-size: 12px;color: #aaa;text-align: right;border-top: 1px solid #e6e6e6;}
+/*page-box*/
+.page-box {margin: 10px 0;}
+.page-box>* {display: inline-block}
+.page-select {position: relative}
+.page-select-btn.dropdown-btn {height: 36px;line-height: 34px;min-width: 60px;padding-left: 5px;padding-right: 25px;font-size: 13px;vertical-align: middle}
+.page-select-btn.dropdown-btn:before {height: 8px;width: 8px;top: 10px;right: 10px}
+.page-select-list.dropdown-menu {width: 50px;max-height: 200px;overflow-y: auto;top: initial;bottom: 0}
+.page-select-list.dropdown-menu>li {padding: 0 6px;text-align: center}
+.page-select-list.dropdown-menu>li.active>a:after {content: none}
+.page-box>span {color: #999;font-size: 14px;margin-left: 5px}
+.page-box>.page-btn {height: 36px;line-height: 34px;vertical-align: middle;width: 40px;border: 1px solid #ccc;border-radius: 3px;margin-left: 5px;background: #fff;position: relative}
+.page-box>.page-btn.page-next-btn:before,
+.page-box>.page-btn.page-prev-btn:before {content: '';height: 9px;width: 9px;border-left: 2px solid #666;border-bottom: 2px solid #666;position: absolute;top: 12px;right: 12px;transform: rotate(45deg)}
+.page-box>.page-btn.page-next-btn:before {right: 16px;transform: rotate(-135deg)}
+.page-box>.page-btn:hover {background: #666;border-color: #666}
+.page-box>.page-btn:hover:before {border-color: #fff}

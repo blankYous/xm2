@@ -1,0 +1,76 @@
+.upload-ul {
+    padding: 50px;
+}
+
+.item {
+    width: 150px;
+    height: 150px;
+    background: white;
+    text-align: center;
+    border: 1px solid rgb(169, 169, 169);
+}
+
+.item_span {
+    display: inline-block;
+    line-height: 150px;
+}
+
+.upload-div .upload-ul, .show-div .show-image-ul {
+    letter-spacing: -0.5em;
+}
+
+.upload-div .upload-ul .upload-li, .show-div .show-image-ul .show-image-li
+{
+    letter-spacing: normal;
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    background: white;
+    text-align: center;
+    margin-right: 30px;
+    float: left;
+    position: relative;
+}
+
+.show-div .show-image-ul .show-image-li img {
+    height: 100%;
+    width: 100%;
+}
+
+.upload-div .upload-ul .upload-li:nth-child(4n), .show-div .show-image-ul .show-image-li:nth-child(4n)
+{
+    margin-right: 0;
+}
+
+.upload-div .upload-ul .upload-li .item.image {
+    font-size: 0;
+}
+
+.upload-div .upload-ul .upload-li .item .delete-image {
+    position: absolute;
+    height: 16px;
+    top: -8px;
+    left: -8px;
+    background: white;
+}
+
+.upload-div .upload-ul .upload-li .item .upload-image {
+    height: 100%;
+    width: 100%;
+    vertical-align: initial;
+}
+
+.img-input-form {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    z-index: 999;
+}
+
+.img-input-form input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+}

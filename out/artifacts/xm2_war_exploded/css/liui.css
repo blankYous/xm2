@@ -1,0 +1,58 @@
+@charset 'UTF-8';
+/*三级联动*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border;
+    color: #333;
+}
+a {
+    text-decoration: none;
+}
+.liui-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    font-weight: 400;
+    margin: 5px 0;
+}
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.btn-default:hover {
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+.btn-success:hover {
+    background-color: #449d44;
+    border-color: #398439;
+}
+
+#liui-city {
+    width: 100%;
+    font-size: 14px;
+    margin: 10px;
+}
+#liui-city select {
+    height: 30px;
+    margin-left: 10px;
+    border-radius: 2px;
+    width: 150px;
+    max-height: 50px;
+}
+select:focus {
+    outline: none;
+}
