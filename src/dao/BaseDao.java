@@ -14,8 +14,8 @@ public class BaseDao {
 
 	private static String driver="com.mysql.jdbc.Driver";
 	private static String url="jdbc:mysql://122.51.150.166/blank?characterEncoding=utf8";
-	private static String user="zss";
-	private static String pwd="618920";
+	private static String user="root";
+	private static String pwd="123456";
 	Connection con = null;
 	/*static {
 		init();
