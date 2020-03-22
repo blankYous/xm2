@@ -13,7 +13,7 @@ import java.util.Properties;
 public class BaseDao {
 
 	private static String driver="com.mysql.jdbc.Driver";
-	private static String url="jdbc:mysql://127.0.0.1:3306/blank?characterEncoding=utf8";
+	private static String url="jdbc:mysql://122.51.150.166/blank?characterEncoding=utf8";
 	private static String user="zss";
 	private static String pwd="618920";
 	Connection con = null;
