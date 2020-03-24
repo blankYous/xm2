@@ -27,14 +27,12 @@ public class buttonSpu extends HttpServlet {//按钮查询商品
         BlankServe blankServe = new BlankServeImp();
         String name=request.getParameter("name");
         List<Blank>list=new ArrayList<Blank>();//装基本数据
-
         if (name.equals("qb")){
             list=blankServe.listSpu();
               String json=JSON.toJSONString(list);
               out.print(json);
 
         }else if (name.equals("sj")){
-
             int a=1;
             list=blankServe.listStatus(a);
                 String json=JSON.toJSONString(list);

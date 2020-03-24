@@ -23,6 +23,7 @@
        <%-- <script src="../js/jquery-1.12.4.js"></script>
 --%>
     </head>
+    <script src="../js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript">
         $(function () {
             setInterval("date.innerHTML=new Date().toLocaleString()",1000);
@@ -138,6 +139,7 @@
         </div>
     </body>
     <script src="../lib/layui/layui.js"></script>
+    <script src="../js/jquery-1.8.3.min.js"></script>
     <script>
         $(function () {
             $(".layui-progress").hover(function () {

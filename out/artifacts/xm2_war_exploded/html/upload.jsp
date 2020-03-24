@@ -198,7 +198,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </form>
     </div>
 </div>
-<script src="../js/jquery-1.8.3.min.js"></script>
+
 <script type="text/javascript">
     $(function () {
         $(".select").click(function () {
@@ -254,14 +254,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
         })//模糊查询
+        var name="";
         $("#all").click(function (){//单击全部
-            var name = "qb";
+             name = "qb";
             $("#all").css("background-color","#f2dede").siblings().css("background-color", "#ececf2");
             $("#all").attr("name","1").siblings().attr("name","0")
             $(".header").attr("class","layui-unselect header layui-form-checkbox");
-            $.getJSON({
-                url:"buttonSpu",
+            $.ajax({
+                url:"/buttonSpu",
                 data:"name="+name,
+                dataType:'json',
                 success:function (data) {
                     $(".spu").remove()
                     $(".gridItem").remove()
@@ -746,13 +748,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             })
         })//单击全部
         $("#sj").click(function () {                           //单击在售中
-            var name = "sj";
+             name = "sj";
             $("#sj").css("background-color","#f2dede").siblings().css("background-color", "#ececf2");
             $("#sj").attr("name","1").siblings().attr("name","0")
             $(".header").attr("class","layui-unselect header layui-form-checkbox");
-            $.getJSON({
+            $.ajax({
                 url:"buttonSpu",
                 data:"name="+name,
+                dataType:'json',
                 success:function (data) {
                     $(".spu").remove()
                     $(".gridItem").remove()
@@ -1237,19 +1240,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             })
         })//单击全在售中
         $("#sk").click(function ()  {                                               //单击在售罄
-            var name = "sk";
+             name = "sk";
             $("#sk").css("background-color","#f2dede").siblings().css("background-color", "#ececf2");
             $("#sk").attr("name","1").siblings().attr("name","0")
             $(".header").attr("class","layui-unselect header layui-form-checkbox");
-            $.getJSON({
+            $.ajax({
                 url:"buttonSpu",
                 data:"name="+name,
+                dataType:'json',
                 success:function (data) {
                     $(".spu").remove();
                     $(".gridItem").remove()
                     $("#count").html(data.length)
                     if (data.length>0){
-
                         for (var i=0;i<data.length;i++){
                             var tr=$("<tr class=\"spu\">\n" +
                                 "        <td>\n" +
@@ -1304,7 +1307,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 $(".sj:eq("+i+")").parent().attr("title","上架")
                             }
                         }
-
                         var a=0;
                         $(".layui-unselect").not(".header").click(function () {  //单击选择
                             if (a%2==0){
@@ -1731,13 +1733,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             })
         })//单击已售罄
         $("#xj").click(function () {//单击下架
-            var name = "xj";
+             name = "xj";
             $("#xj").css("background-color","#f2dede").siblings().css("background-color", "#ececf2");
             $("#xj").attr("name","1").siblings().attr("name","0")
             $(".header").attr("class","layui-unselect header layui-form-checkbox");
-            $.getJSON({
+            $.ajax({
                 url:"buttonSpu",
                 data:"name="+name,
+                dataType:'json',
                 success:function (data) {
                     $(".spu").remove();
                     $(".gridItem").remove();
