@@ -17,8 +17,8 @@
         <script src="../js/jquery.min.js"></script>
         <script src="../lib/layui/layui.js"></script>
         <script type="text/javascript" src="../js/xadmin.js"></script>
-        <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-        <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+        <script src="../js/html5-min.js"></script>
+        <script src="../js/respond-min.js"></script>
 
        <%-- <script src="../js/jquery-1.12.4.js"></script>
 --%>
@@ -27,7 +27,7 @@
         $(function () {
             setInterval("date.innerHTML=new Date().toLocaleString()",1000);
             var a=document.referrer;
-            if (a=="http://localhost:8080/indexht.jsp"){
+            if (a=="http://localhost:8080/indexht.jsp"||a=="http://122.51.150.166:8080/indexht.jsp"){
                 window.location.href="/bigData";
             }
         })

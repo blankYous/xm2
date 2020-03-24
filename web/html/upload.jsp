@@ -198,6 +198,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </form>
     </div>
 </div>
+<script src="../js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript">
     $(function () {
         $(".select").click(function () {
@@ -2544,6 +2545,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </a>--%>
         </td>
     </tr>
+  <script src="../js/jquery-1.8.3.min.js"></script>
   <script>
             $(function () {
                 var count='${list.count}';
@@ -2597,7 +2599,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <span id="spanNext">下一页</span>
     <span  id="spanLast">尾页</span>
 </div>
-
+<script src="../js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" class="js">
     var theTable = document.getElementById("t_student");
     var txtValue = document.getElementById("Text1").value;
