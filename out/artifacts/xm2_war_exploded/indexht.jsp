@@ -247,7 +247,7 @@
           </ul>
           <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
-                <iframe src='html/welcome.jsp?name=${name}' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+                <iframe src='<%--html/welcome.jsp?name=${name}--%>bigData' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
             </div>
           </div>
         </div>

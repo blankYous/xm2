@@ -261,7 +261,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $("#all").attr("name","1").siblings().attr("name","0")
             $(".header").attr("class","layui-unselect header layui-form-checkbox");
             $.ajax({
-                url:"/buttonSpu",
+                url:"buttonSpu",
                 data:"name="+name,
                 dataType:'json',
                 success:function (data) {
