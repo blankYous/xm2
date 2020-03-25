@@ -14,11 +14,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="../css/font.css">
-    <link rel="stylesheet" href="../css/xadmin.css">
-    <script src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="../lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../js/xadmin.js"></script>
+    <link rel="stylesheet" href="<%--../--%>css/font.css">
+    <link rel="stylesheet" href="<%--../--%>css/xadmin.css">
+    <script src="<%--../--%>js/jquery.min.js"></script>
+    <script type="text/javascript" src="<%--../--%>lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="<%--../--%>js/xadmin.js"></script>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><%--标签--%>
     <style type="text/css">
         #login{
@@ -109,7 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
     </style>
 </head>
-<body class="form-wrap" style="background-image: url('../images/e9218aec65aadad0fd9e7e7c700d305d.jpg');background-repeat:no-repeat; background-size: 100%;position: relative" >
+<body class="form-wrap" style="background-image: url('<%--../--%>images/e9218aec65aadad0fd9e7e7c700d305d.jpg');background-repeat:no-repeat; background-size: 100%;position: relative" >
 
 <%--修改框--%>
 <div id="login" style=" "></div>
@@ -2548,7 +2548,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </a>--%>
         </td>
     </tr>
-  <script src="../js/jquery-1.8.3.min.js"></script>
+  <script src="<%--../--%>js/jquery-1.8.3.min.js"></script>
   <script>
             $(function () {
                 var count='${list.count}';
@@ -2602,7 +2602,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <span id="spanNext">下一页</span>
     <span  id="spanLast">尾页</span>
 </div>
-<script src="../js/jquery-1.8.3.min.js"></script>
+<script src="<%--../--%>js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" class="js">
     var theTable = document.getElementById("t_student");
     var txtValue = document.getElementById("Text1").value;
@@ -2645,6 +2645,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     }
 
 </script>
-<script type="text/javascript" src="../js/Pagging.js" class="js"></script>
+<script type="text/javascript" src="<%--../--%>js/Pagging.js" class="js"></script>
 </body>
 </html>
