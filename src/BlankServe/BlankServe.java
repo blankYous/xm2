@@ -81,7 +81,7 @@ public interface BlankServe {
     //新增完订单删除购物车数据
     int deletegwcs(String name,int size,String color,String userAccount);
     //支付成功修改为已支付
-    int updateDD(String zhifzt,String ddhao,String date,String user);
+    int updateDD(String zhifzt,String ddhao,String date,String user,String ddzt);
     //删除订单附表
     int deletedd(String ddhao);
     //删除订单主表
@@ -165,5 +165,14 @@ public interface BlankServe {
     int deal(String date);
     int money(String date);
     int shoeSales(String name,String date);
+    /**
+     * 后台订单
+     */
+    //分页查询订单信息
+    Page selectpage(int page,int pagemax);
+    //有条件,分页查询订单信息
+    Page selecttj(Blank bk,int page,int pagemax);
+    //发货
+    int updateFh(String ddhao);
 
 }

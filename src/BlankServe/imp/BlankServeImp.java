@@ -230,8 +230,8 @@ public class BlankServeImp implements BlankServe{
     }
 
     @Override
-    public int updateDD(String zhifzt,String ddhao,String date,String user) {
-        return blankDao.updateDD(zhifzt, ddhao,date,user);
+    public int updateDD(String zhifzt,String ddhao,String date,String user,String ddzt) {
+        return blankDao.updateDD(zhifzt,ddhao,date,user,ddzt);
     }
 
     @Override
@@ -399,4 +399,33 @@ public class BlankServeImp implements BlankServe{
 //    public List<Blank> listxk(int price, int price2) {
 //        return blankDao.listxk(price,price2);
 //    }
+//没用了
+@Override
+public Page selectpage(int page, int pagemax) {
+    Page page1 = new Page();
+    page1.setPage(page);
+    int count=blankDao.selectcount();
+    page1.setConutSum(count);
+    int pagecount=count%pagemax==0?count/pagemax:count/pagemax+1;
+    page1.setPageSum(pagecount);
+    page1.setList(blankDao.htselectdd((page-1)*pagemax,pagemax));
+    return page1;
+}
+
+    @Override
+    public Page selecttj(Blank bk, int page, int pagemax) {
+        Page pages=new Page();
+        pages.setPage(page);
+        int count=blankDao.selectcount();
+        pages.setConutSum(count);
+        int pagecount=count%pagemax==0?count/pagemax:count/pagemax+1;
+        pages.setPageSum(pagecount);
+        pages.setList(blankDao.selecttj(bk,(page-1)*pagemax,pagemax));
+        return pages;
+    }
+
+    @Override
+    public int updateFh(String ddhao) {
+        return blankDao.updateFh(ddhao);
+    }
 }

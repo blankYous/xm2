@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="zxx">
 
@@ -32,8 +32,8 @@
 	    rel="stylesheet">
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
 
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<script type="text/javascript" src="jps/jquery-latest.js"></script>
+	<link rel="stylesheet" href="css/font-awesome.css">
+	<script type="text/javascript" src="jp/jps/jquery-latest.js"></script>
 	<link type="text/css" href="jp/style.css" rel="stylesheet" />
 	<script src="js/jquery-1.12.4.js"></script>
 	<script src="js/jquery-1.8.3.min.js"></script>
@@ -229,17 +229,34 @@
 			background-color:#FFFFFF;
 			color:forestgreen;position:absolute;top: -13px;left: -6px
 		}
+		#mns{
+			height: 150px;
+			width: 450px;
+			border: 1px solid #d8d8d8;
+			z-index: 1001;
+			position: fixed;
+			background-color: #FFFFFF;
+			margin-left: 34%;
+			box-shadow:3px 3px 3px gray;
+			display: none;
+		}
 	</style>
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><%--图标--%>
 </head>
 <body style="position: relative">
+<div id="mns">
+	<br/>
+	<h4 style="margin-left: 20px;font-width: bold;">收货地址：</h4><br/>
+	   <h3 style="font-size: 17px" align="center">地址信息未添加...</h3><br/>
+	<button id="bt-dz" style="float: right;margin-right: 10px;width: 80px;background-color: cornflowerblue;color: #FFFFFF">确定</button>
+</div>
 <div id="cgs" style="position:absolute;background-color: #000000;opacity: 0.5;z-index:998;height: 100%;width: 100%;display: none">
 </div>
 <div id="zss">
 </div>
 <div id="gys">
 	<h3 style="z-index: 1001;margin-left: 180px;margin-top:40px;color: #000000 " class="fa-li fa fa-check-square fa-4x"></h3>
-    <h3 style="z-index: 1001;margin-left: 180px;margin-top:40px;color: #000000 " class="fa-li fa fa-close fa-4x"></h3>
+<%--    <h3 style="z-index: 1001;margin-left: 180px;margin-top:40px;color: #000000 " class="fa-li fa fa-close fa-4x"></h3>--%>
 	<h3 align="center" style="color: #000000;margin-top: 60px">下单成功</h3>
 </div>
 <%--登入框--%>
@@ -292,13 +309,14 @@
 						</form>
 						<div style="margin-top: -35px;margin-left: 45px">
 							<button class="top_shoe_cart  top_shoe_personal">
-								<i class="fa " id="personage" aria-hidden="true"><img src="images/personage.png"></i>
+								<i class="fa" id="personage" aria-hidden="true">
+									<img src="images/personage.png"/></i>
 							</button>
 							<p style="display: none" id="userName">${user}</p>
 						</div>
 					</div>
 				</div>
-				<script src="js/jquery-1.8.3.min.js"></script>
+				<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 				<script>
 					$(function () {
 						var userName=$("#userName").text();
@@ -312,7 +330,6 @@
 								count = date;
 							}
 						})
-						alert(count)
 						if (count.trim()!="0"){
 							$("#yuan").html(count);
 						}else{
@@ -413,7 +430,7 @@
 		padding: 0px;
 		border: 1px solid #cecece;
 		width: 95%;
-		height: 200px;
+        height: 80px;
 		margin-top: 30px;
 	}
 	.tab td{
@@ -446,7 +463,6 @@
 		<h3 style=";margin-top: 30px;margin-left: 70px;">
 			<span>收货地址</span>
 		</h3>
-
 		<button type="button" id="fomss">
 			<span STYLE="float: left;color: #c1c1c1" id="title">[默认地址]</span>
 			<table>
@@ -462,10 +478,11 @@
 				</tr>
 			</table>
 			<span class="caretnew1" id="caretnew" style="float: right;margin-top: 10px"></span>
+			<span style="float: right">(点击更换地址)</span>
 		</button>
 		<div style="margin-left: 140px; margin-top: 20px; width: 800px;display: none" id="selectAddress">
-			<a  href="selectAddress">新增地址</a>
-		<table>
+			<a  href="web">新增地址</a>
+		<table id="dz-xz">
 		<c:forEach items="${list1}" var="list" begin="0" end="${list1.size()}"  varStatus="status">
 			<script>
 				$(function () {
@@ -494,7 +511,10 @@
 			<tr><td  style=""></td></tr>
 		</table>
 		</div>
-
+		<div id="dz-mk" style="margin-left: 100px;;height: 40px;width:70%;border-bottom: 1px solid #000000">
+			<h4 align="center" style="margin-top: 40px">你还没有自己的收货地址哦...</h4>
+			<a  href="web">新增地址...</a>
+		</div>
 		<script type="text/javascript">
 			$(function () {
 				$(".ys:eq(0)").attr("class","fa fa-dot-circle-o ys");
@@ -578,14 +598,35 @@
 												</div>
 											</div>
 											<button class="submit" id="qrxd" style="margin-top: 20px"><span>确认下单</span></button>
+											<script src="js/jquery-1.8.3.min.js"></script>
                                             <script>
-                                                $("#qrxd").click(function () {
+												//判断有无地址
+												$(function () {
+													var fosdzhi=${list1.get(0).id}
+													alert(fosdzhi)
+													if (fosdzhi<=0){
+														$("#fomss").hide()
+                                                          $("#dz-xz").hide();
+													}else{
+														$("#dz-mk").hide();
+													}
+												})
+												$("#qrxd").click(function () {
+                                                	//下单时间
+													var vNow = new Date();
+													var sNow = "";
+													sNow += String(vNow.getFullYear());
+													sNow += "-"+String(vNow.getMonth() + 1);
+													sNow +="-"+String(vNow.getDate());
+													sNow +=" "+String(vNow.getHours());
+													sNow +=":"+String(vNow.getMinutes());
+
                                                     var gh;
                                                     var countm=0;
                                                     var ddhao=$("#trade_no").val() //订单号
                                                     var ddname=$("#sj").val()   //订单名称
                                                     var ddprice=$("#amounts").val(); //订单金额
-													var fosdzhi=$("#fomss tr td span").html(); //收货地址信息
+													var fosdzhi=$("#DefaultValue").html(); //收货地址信息
 													for (var i=0;i<$(".countm").length;i++){
 														countm+=parseInt($(".countm:eq("+i+")").html())
 													}
@@ -597,7 +638,7 @@
 													var phone=$("#phone").html();
 													var dizhi="";
 													dizhi+=shengf+""+province+""+clientType+""+areaElement+""+detailed
-                                                    if (fosdzhi!="") {
+                                                    if (fosdzhi=="1"||fosdzhi=="0") {
 														var namejson = new Array();
                                                         for (var i = 0; i < $(".trams").length; i++) {
                                                             namejson[i] = document.getElementsByClassName("spname")[i].innerHTML;  //商品名称
@@ -617,7 +658,7 @@
                                                             url: "qrxds",
                                                             type: "POST",
                                                             async: false,
-                                                            data: "countm="+countm+"&ddhao=" + ddhao + "&ddname=" + ddname + "&ddprice=" + ddprice + "&ddphone=" + phone + "&ddzhi="+dizhi+"&jsons=" + encodeURIComponent(jsons)+"&colors="+encodeURIComponent(colors)+"&shoes="+encodeURIComponent(shoes),
+                                                            data: "countm="+countm+"&ddhao=" + ddhao + "&ddname=" + ddname + "&ddprice=" + ddprice + "&ddphone=" + phone + "&ddzhi="+dizhi+"&jsons=" + encodeURIComponent(jsons)+"&colors="+encodeURIComponent(colors)+"&shoes="+encodeURIComponent(shoes)+"&time="+sNow,
                                                             success: function (date) {
                                                                 gh = date;
                                                             }
@@ -639,16 +680,22 @@
                                                     }else{
                                                         $("#zss").append("<i class=\"fa-li fa fa-spinner fa-pulse fa-4x\"></i>提交中...");
                                                         setTimeout(function () {
-                                                            $("#zss").html("");
-                                                            $("#gys h3:last").html("请补充完信息!");
-                                                            $("#gys h3:first").hide();
-                                                            $("#gys").slideDown(600)
-                                                            setTimeout(function () {
-                                                                $("#gys").css("display", "none")
-																$("#fomss").focus();
-                                                            }, 2000)
+                                                            // $("#zss").html("");
+                                                            // $("#gys h3:last").html("收货地址：还没有填写地址！");
+                                                            //  $("#gys h3:first").hide();
+                                                            // $("#gys").slideDown(600)
+                                                            // setTimeout(function () {
+                                                            //     $("#gys").css("display", "none")
+															// 	$("#fomss").focus();
+                                                            // }, 2000)
+															$("#mns").fadeIn(600)
+															// $("#mns").slideDown(600)
+															$("#bt-dz").click(function () {
+																$("#mns").fadeOut(600)
+															})
                                                         }, 2000)
                                                     }
+
                                                 });
                                                 //默认给值
                                                 function GetDateNow() {
@@ -703,10 +750,21 @@
 							><span>付 款</span></button>
 						</span><br/><br/><br/> <span class="note-help">如果您点击“付款”按钮，即表示您同意该次的执行操作。</span>
 														<script>
+
 															$(function () {
 																var gh="";
 																var countm=0;
 																$("#fuks").click(function () {
+																	//下单时间
+																	var vNow = new Date();
+																	var sNow = "";
+																	sNow += String(vNow.getFullYear());
+																	sNow += "-"+String(vNow.getMonth() + 1);
+																	sNow +="-"+String(vNow.getDate());
+																	sNow +=" "+String(vNow.getHours());
+																	sNow +=":"+String(vNow.getMinutes());
+
+
 																	var ddhao=$("#WIDout_trade_no").val() //订单号
 																	var ddname=$("#WIDsubject").val()   //订单名称
 																	var ddprice=$("#WIDtotal_amount").val(); //订单金额
@@ -721,9 +779,9 @@
 																	var phone=$("#phone").html();
 																	var dizhi="";
 																	dizhi+=shengf+"/t"+province+"/t"+clientType+"/t"+areaElement+"/t"+detailed
-																	var fosdzhi=$("#fomss tr td span").html(); //收货地址信息
+																	var fosdzhi=$("#DefaultValue").html(); //收货地址信息
 																	var namejson = new Array();
-																	if (fosdzhi!="") {
+																	if (fosdzhi=="1"||fosdzhi=="0") {
 																		for (var i = 0; i < $(".trams").length; i++) {
 																			namejson[i] = document.getElementsByClassName("spname")[i].innerHTML;  //商品名称
 																		}
@@ -742,7 +800,7 @@
 																			url: "DD",
 																			type: "POST",
 																			async: false,
-																			data: "countm="+countm+"&ddhao=" + ddhao + "&ddname=" + ddname + "&ddprice=" + ddprice + "&ddphone=" + phone + "&ddzhi=" + dizhi + "&jsons=" + encodeURIComponent(jsons)+"&colors="+encodeURIComponent(colors)+"&shoes="+encodeURIComponent(shoes),
+																			data: "countm="+countm+"&ddhao=" + ddhao + "&ddname=" + ddname + "&ddprice=" + ddprice + "&ddphone=" + phone + "&ddzhi=" + dizhi + "&jsons=" + encodeURIComponent(jsons)+"&colors="+encodeURIComponent(colors)+"&shoes="+encodeURIComponent(shoes)+"&time="+sNow,
 																			success: function (date) {
 																				gh = date;
 																			}
@@ -755,14 +813,19 @@
 																	}else{
 																		$("#zss").append("<i class=\"fa-li fa fa-spinner fa-pulse fa-4x\"></i>提交中...");
 																		setTimeout(function () {
-																			$("#zss").html("");
-																			$("#gys h3:last").html("请补充完信息!");
-																			$("#gys h3:first").hide();
-																			$("#gys").slideDown(600)
-																			setTimeout(function () {
-																				$("#gys").css("display", "none")
-																				$("#fomss").focus();
-																			}, 2000)
+																			// $("#zss").html("");
+																			// $("#gys h3:last").html("收货地址：还没有填写地址!");
+																			//  $("#gys h3:first").hide();
+																			// $("#gys").slideDown(600)
+																			// setTimeout(function () {
+																			// 	$("#gys").css("display", "none")
+																			// 	$("#fomss").focus();
+																			// }, 2000)
+																			$("#mns").fadeIn(600)
+																			// $("#mns").slideDown(600)
+																			$("#bt-dz").click(function () {
+																				$("#mns").fadeOut(600)
+																			})
 																		}, 2000)
 																	}
 																})

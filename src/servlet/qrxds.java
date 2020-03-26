@@ -35,14 +35,16 @@ public class qrxds extends HttpServlet {
            System.out.println(ddphone);
            String ddzhi = request.getParameter("ddzhi");
            System.out.println(ddzhi);
+           String time=request.getParameter("time");
+           System.out.println(time);
            String jsons = request.getParameter("jsons");
            System.out.println(jsons);
            List<Blank> list = new ArrayList<Blank>();
            JSONArray ar = JSON.parseArray(jsons);  //将传过来的json格式数组字符串转换为jsonArry数组对象
            String jsoncolor=request.getParameter("colors");
            String jsonshoe=request.getParameter("shoes");
-           JSONArray co= JSON.parseArray(jsoncolor);
-           JSONArray sh= JSON.parseArray(jsonshoe);
+           JSONArray co=JSON.parseArray(jsoncolor);
+           JSONArray sh=JSON.parseArray(jsonshoe);
            String user=(String)request.getServletContext().getAttribute("user");
            //先增主表再增子表
            Blank nk = new Blank();
@@ -54,6 +56,10 @@ public class qrxds extends HttpServlet {
            nk.setPhones(ddphone);
            nk.setAccount(user);
            nk.setCount(countm);
+           nk.setTime(time);
+           nk.setFkmoney("货到付款");
+           nk.setDdzt("未确定");
+           nk.setFhuo("未发货");
            int cu = se.insertDDxxi(nk);
            String account=(String) request.getServletContext().getAttribute("user"); //获取账号
            for (int i = 0; i < ar.size(); i++) {
@@ -71,7 +77,6 @@ public class qrxds extends HttpServlet {
                bks.setTradeCounts(bk.getTradeCounts());
                bks.setTradeImg(bk.getTradeImg());
                list.add(bks);
-
            }
            if (cu > 0) {
                out.print(1);
@@ -79,7 +84,7 @@ public class qrxds extends HttpServlet {
                    int cou = se.insertDDbiao(list.get(j));
                    Blank bks=new Blank();
                    bks=se.selectkucun(list.get(j).getTradeShoe(),list.get(j).getTradeColor(),list.get(j).getTradeName()
-                   ,list.get(j).getTradePrice());
+                           ,list.get(j).getTradePrice());
                    int kucun=bks.getTradeCounts();
                    System.out.println("库存1"+kucun);
                    kucun=kucun-list.get(j).getTradeCounts();
@@ -89,7 +94,7 @@ public class qrxds extends HttpServlet {
                    km.setTradeShoe(bks.getTradeShoe());
                    km.setTradeColor(bks.getTradeColor());
                    km.setTradeId(bks.getTradeId());
-                    int gh=se.updatekucun(km);
+                   int gh=se.updatekucun(km);
                    System.out.println("测试"+gh);
                }
                for (int i = 0; i < ar.size(); i++) {

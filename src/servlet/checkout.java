@@ -21,6 +21,7 @@ public class checkout extends HttpServlet {//查询购物车
        BlankServe blankServe=new BlankServeImp();
        String account=(String) req.getServletContext().getAttribute("user"); //获取账号
         List<Blank>  list = new ArrayList<Blank>();
+        List<Integer>listCount=new ArrayList<Integer>();
         list=blankServe.listgwc(account);
         req.setAttribute("list",list);
         req.getRequestDispatcher("checkout.jsp").forward(req,resp);

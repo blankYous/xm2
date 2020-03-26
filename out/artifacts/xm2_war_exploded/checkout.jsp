@@ -43,12 +43,11 @@
 						var img = $(".img-responsive:eq(" + index + ")").attr("src");
 						var color=document.getElementsByClassName("color")[index].innerHTML;
 						var xiema=document.getElementsByClassName("xiema")[index].innerHTML;
-						alert(img+""+color+""+xiema)
 						$.ajax({
 							url: "deleteGwc",
 							type: "POST",
 							async: false,
-							data: "img="+img+"&color="+color+"&xiema="+xiema,
+							data: "img=" + img+"&color="+color+"&xiema="+xiema,
 							success: function (date) {
 								mj = date;
 							}
@@ -93,10 +92,9 @@
 			//点击加
 			$('.value-plus').on('click', function () {
 				var index=$(".value-plus").index(this)
-				var code="";
-				 code=document.getElementsByClassName("namecount")[index].innerHTML;
+				var code=document.getElementsByClassName("namecount")[index].innerHTML;
 				var mn=parseInt(code)+1;//数量
-				var kucun=$("#kucun").html();//库存
+				var kucun=$("#kucun").html()//库存
 				if(mn==kucun){
 					mn=kucun;
 				}
@@ -113,12 +111,6 @@
 					async: false,
 					data:"name="+name+"&img="+img+"&color="+color+"&shoe="+xiema+"&price="+mani+"&count="+mn,
 					success: function (date) {
-						alert(date)
-						if (date=="true"){
-							alert(code)
-							code="";
-							mn="";
-						}
 
 					}
 				});
@@ -515,14 +507,15 @@
 				<script src="js/jquery-1.12.4.js"></script>
 				<script>
 					$(function () {
+						var userName=$("#userName").text();
 						$("#personage").click(function () {
-							var userName = $("#userName").text();
 							<%--		var userName="<%request.getParameter("user");%>";--%>
-							if (userName == "") {
+							alert(userName)
+							if (userName==""){
 								$("#login").show();
 								$("#login2").show();
 							} else {
-								location.href = "web";
+								location.href="web";
 							}
 						})
 						$("#cancel").click(function () {
@@ -530,45 +523,31 @@
 							$("#login2").hide();
 						})
 						$("#log").click(function () {
-							var user = $("#user").val();
-							var passwd = $("#passwd").val();
+							var user=$("#user").val();
+							var passwd=$("#passwd").val();
 							var tj;
-							if (user == "" || passwd == "") {
+							if (user==""||passwd==""){
 								$("#span").html("账号密码不能为空");
 								$("#p").show();
-							} else {
+							}else {
 								$.ajax({
-									url: "login",
-									type: "POST",
-									data: "user=" + user + "&passwd=" + passwd,
+									url:"login",
+									type:"POST",
+									data:"user="+user+"&passwd="+passwd,
 									async: false,
 									success: function (date) {
-										tj = date
+										tj=date
 									}
 								})
-								if (tj.trim() == user) {
+								alert(tj)
+								if (tj.trim()==user){
 									$("#login").hide();
 									$("#login2").hide();
 									$("#userName").html(user);
-									var count = "";
-									$.ajax({
-										url: "gwccount",
-										type: "POST",
-										async: false,
-										data: "user=" + user,
-										success: function (date) {
-											count = date;
-										}
-									})
-									if (count.trim() != "0") {
-										$("#yuan").html(count);
-									} else {
-										$("#yuan").html(0);
-									}
-								} else if (tj.trim() == "dj") {
+								}else if (tj.trim()=="dj"){
 									$("#span").html("账号已被冻结");
 									$("#p").show();
-								} else {
+								} else{
 									$("#span").html("账号或密码有误");
 									$("#p").show();
 								}
@@ -581,7 +560,7 @@
 	</div>
 	<!-- //cart details -->
 	<!-- search -->
-	<div class="search_w3ls_agileinfo" >
+	<div class="search_w3ls_agileinfo">
 		<div class="cd-main-header">
 			<ul class="cd-header-buttons">
 				<li ><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
@@ -656,6 +635,12 @@
 					</c:forEach>
 					</tbody>
 				</table>
+				<div id="sh-sh" style="height: 200px;width: 100%;border: 1px solid #cecece">
+					<input type="hidden" name="cmd" value="_cart">
+					<input type="hidden" name="display" value="1">
+						<i class="fa fa-cart-arrow-down" style="margin-left:45%;;margin-top:60px;font-size: 60px" aria-hidden="true"></i>
+					<a href="#">你还没有商品...</a>
+				</div>
 			</div>
 			<div class="checkout-left">
 				<div class="col-md-4 checkout-left-basket" >
@@ -674,6 +659,15 @@
 				</div>
 				<script>
 					$(function () {
+						//判断购物车是否有商品的显示
+						$(function () {
+                          var count=$("#ta tr").length;
+                          if (count==0){
+                               $(".timetable_sub").hide();
+						  }else{
+                          	 $("#sh-sh").hide();
+						  }
+						})
 						$(".checkout-right-basket").click(function () {
 							var zji=document.getElementById("mt").innerText
 							zji = zji.substr(1);

@@ -6,6 +6,7 @@ import entity.Blank;
 import entity.Page;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 @SuppressWarnings("all")
@@ -194,8 +195,8 @@ public class BlankDaoImp extends BaseDao implements BlankDao{
 
     @Override
     public int trade(Blank blank) {
-        String sql = "INSERT into gwc(tradeimg,tradeName,tradecolor,tradeshoe,tradeprice,tradecount,userAccount)VALUES(?,?,?,?,?,?,?)";
-        Object[] params = {blank.getTradeImg(), blank.getTradeName(), blank.getTradeColor(), blank.getTradeShoe(), blank.getTradePrice(), blank.getTradeCount(), blank.getAccount()};
+        String sql = "INSERT into gwc(tradeimg,tradeName,tradecolor,tradeshoe,tradeprice,tradecount,userAccount,spuId)VALUES(?,?,?,?,?,?,?,?)";
+        Object[] params = {blank.getTradeImg(), blank.getTradeName(), blank.getTradeColor(), blank.getTradeShoe(), blank.getTradePrice(), blank.getTradeCount(), blank.getAccount(),blank.getId()};
         int counts = 0;
         try {
             counts = super.exceuteUpdate(sql, params);
@@ -723,9 +724,9 @@ public class BlankDaoImp extends BaseDao implements BlankDao{
 
     @Override
     public int insertDDxxi(Blank blank) {
-        String sql="insert into zhubiao(ddhao,price,ddname,dizhi,zhifzt,phone,userAccount,countm) value(?,?,?,?,?,?,?,?);";
+        String sql="insert into zhubiao(ddhao,price,ddname,dizhi,zhifzt,phone,userAccount,countm,time,fkmoney,ddzt,fhuo) value(?,?,?,?,?,?,?,?,?,?,?,?);";
         Object[] params={blank.getDdhao(),blank.getDdprice(),blank.getDdname(),blank.getDdzhi(),
-                blank.getZt(),blank.getPhones(),blank.getAccount(),blank.getCount()};
+                blank.getZt(),blank.getPhones(),blank.getAccount(),blank.getCount(),blank.getTime(),blank.getFkmoney(),blank.getDdzt(),blank.getFhuo()};
         int count=0;
         try{
             count=super.exceuteUpdate(sql,params);
@@ -761,9 +762,9 @@ public class BlankDaoImp extends BaseDao implements BlankDao{
         return count;
     }
     @Override
-    public int updateDD(String zhifzt,String ddhao,String date,String user) {
-        String sql="update zhubiao set zhifzt=? ,paymentDate=? where ddhao=? and userAccount=?";
-        Object[] params={zhifzt,date,ddhao,user};
+    public int updateDD(String zhifzt,String ddhao,String date,String user,String ddzt) {
+        String sql="update zhubiao set zhifzt=?,ddzt=? ,paymentDate=? where ddhao=? and userAccount=?";
+        Object[] params={zhifzt,ddzt,date,ddhao,user};
         int cout=0;
         try{
             cout=super.exceuteUpdate(sql,params);
@@ -1174,6 +1175,98 @@ public class BlankDaoImp extends BaseDao implements BlankDao{
         }
         return count;
     }
+    @Override
+    public List<Blank> htselectdd(int page,int pagemax) { //11111111111111111111111111
+        String sql="select * from zhubiao limit ?,?";
+        Object[] params={page,pagemax};
+        List<Blank> list = new ArrayList<Blank>();
+        try{
+            ResultSet resultSet = super.exceuteQuery(sql,params);
+            while (resultSet.next()){
+                Blank bk=new Blank();
+                bk.setId(resultSet.getInt(1));
+                bk.setDdhao(resultSet.getString(2));
+                bk.setPrice(resultSet.getInt(3));
+                bk.setUserName(resultSet.getString(4));
+                bk.setDetailed(resultSet.getString(5));
+                bk.setZt(resultSet.getString(6));
+                bk.setPhones(resultSet.getString(7));
+                bk.setAccount(resultSet.getString(8));
+                bk.setCount(resultSet.getInt(9));
+                bk.setTime(resultSet.getString(10));
+                bk.setFkmoney(resultSet.getString(11));
+                bk.setDdzt(resultSet.getString(12));
+                bk.setFhuo(resultSet.getString(13));
+                list.add(bk);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 
+    @Override
+    public List<Blank> selecttj(Blank bk,int page,int pagemax) {
+        List<Blank> list = new ArrayList<Blank>();
+        if(bk!=null) {
+            String sql = "select * from zhubiao where id in(select id FROM zhubiao where id>=(select id from zhubiao where time=? ORDER BY id asc LIMIT 1) and id<=(select id from zhubiao where time=? ORDER BY id desc LIMIT 1)\n" +
+                    ") or  zhifzt=? or \n" +
+                    " fkmoney=? or\n" +
+                    " ddhao=? or ddzt=?  limit ?,?";
+            Object[] params={bk.getTime(),bk.getTimes(),bk.getZt(),bk.getFkmoney(),bk.getDdhao(),bk.getDdzt(),page,pagemax};
+            try{
+                ResultSet rs=super.exceuteQuery(sql,params);
+                while (rs.next()) {
+                    Blank bks = new Blank();
+                    bks.setId(rs.getInt(1));
+                    bks.setDdhao(rs.getString(2));
+                    bks.setPrice(rs.getInt(3));
+                    bks.setUserName(rs.getString(4));
+                    bks.setDetailed(rs.getString(5));
+                    bks.setZt(rs.getString(6));
+                    bks.setPhone(rs.getString(7));
+                    bks.setAccount(rs.getString(8));
+                    bks.setCount(rs.getInt(9));
+                    bks.setTime(rs.getString(10));
+                    bks.setFkmoney(rs.getString(11));
+                    bks.setDdzt(rs.getString(12));
+                    bks.setFhuo(rs.getString(13));
+                    list.add(bks);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else{
+            list=htselectdd( page, pagemax);
+        }
+        return list;
+    }
+
+    @Override
+    public int selectcount() {
+        String sql="select count(*) from zhubiao";
+        ResultSet rs=super.exceuteQuery(sql,null);
+        int count= 0;
+        try {
+            rs.next();
+            count = rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    @Override
+    public int updateFh(String ddhao) {
+        String sql="update zhubiao set fhuo='已发货' where ddhao=?";
+        Object[] params={ddhao};
+        int count=-1;
+        try {
+            count=super.exceuteUpdate(sql,params);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
 
 }

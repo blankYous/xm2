@@ -377,6 +377,7 @@
 			</div>
 
 			<div class="col-md-8 single-right-left simpleCart_shelfItem">
+				<p id="spuId" style="display: none">${listAll.get(0).getId()}</p>
 				<h3 id="title">${ listAll.get(0).getTitle()}</h3>
 				<p>￥<span class="item_price" id="jg">${listAll.get(0).getPrice()}</span>
 					<del>￥<span id="yj">${ listAll.get(0).getOriginalPrice()}</span></del>
@@ -576,7 +577,6 @@
 							var ma = ""
 							$("#tj").click(function () {
 								var aa=$("#aa").html();
-								alert(aa)
 								if (aa==""){
 									$("#login").show();
 									$("#login2").show();
@@ -630,6 +630,7 @@
 										}
 									})
 								}else {
+									var spuId=$("#spuId").text();//id
 									var title = $("#title").text();  //名称
 									var jg = $("#jg").text();  //价格
 									var count = $("#count").val();  //数量
@@ -638,7 +639,7 @@
 									var img = $("#src").attr("data-thumb");  //图片路劲
 									$.ajax({
 										url: "gwc",
-										data: "name=" + title + "&price=" + jg + "&count=" + count + "&img=" + img + "&shoe=" + shoe + "&color=" + color,
+										data: "name=" + title + "&price=" + jg + "&count=" + count + "&img=" + img + "&shoe=" + shoe + "&color=" + color+"&spuId="+spuId,
 										dataType: "text",
 										type: "POST",
 										async: false,

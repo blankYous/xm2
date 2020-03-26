@@ -25,7 +25,7 @@ public class gwcshaux extends HttpServlet {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");//设置日期格式
         String date=df.format(new Date());// new Date()为获取当前系统时间
         System.out.println(date);
-     int count=serve.updateDD("已支付",ddhao,date,user);
+     int count= serve.updateDD("已支付",ddhao,date,user,"已确定");
      if (count>0){
          request.getRequestDispatcher("checkout").forward(request,response);
      }

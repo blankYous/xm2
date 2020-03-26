@@ -539,7 +539,7 @@
             $.ajax({
                 cache: false,
                 contentType: false,
-                url: "/putaway", //发送请求到后台的地址
+                url: "/xm2_war_exploded/putaway", //发送请求到后台的地址
                 type: "post",
                 dataType: "text",//返回的数据类型为纯文本字符串
                 data: new FormData(document.getElementById("formadd")), //发送的数据是id="for"的表单中的数据,其中document.getElementById()函数的功能是根据对象的名称获取对象
@@ -642,7 +642,7 @@
             })
             if (json.length>0){
                 $.ajax({
-                    url:"/putawayCondition",
+                    url:"/xm2_war_exploded/putawayCondition",
                     data: {"json":JSON.stringify(json),"title":title},
                     type: "POST",
                     async: false,
@@ -661,7 +661,7 @@
             }
         })
         $("#fh").click(function () {
-            location.href="/selectPutaway";
+            location.href="/xm2_war_exploded/selectPutaway";
         })
 /*       var name=document.referrer;
         if (name=="http://localhost:8080/selectPutaway"){
@@ -669,8 +669,6 @@
         }*/
 
     })
-
-
 </script>
 
 </body>

@@ -95,7 +95,7 @@ public interface BlankDao {
     //新增完订单删除购物车数据
     int deletegwcs(String name,int size,String color,String userAccount);
     //支付成功修改为已支付
-    int updateDD(String zhifzt,String ddhao,String date,String user);
+    int updateDD(String zhifzt,String ddhao,String date,String user,String ddzt);
     //删除订单附表
     int deletedd(String ddhao);
     //删除订单主表
@@ -166,4 +166,16 @@ public interface BlankDao {
     int deal(String date);
     int money(String date);
     int shoeSales(String name,String date);
+    /**
+     * 后台订单
+     * 彭狗勇 丢人
+     */
+    //查出所有订单信息
+    List<Blank> htselectdd(int page,int pagemax);
+    //根据条件查询订单信息
+    List<Blank> selecttj(Blank bk,int page,int pagemax);
+    //查询订单信息数量
+    int selectcount();
+    //发货
+    int updateFh(String ddhao);
 }

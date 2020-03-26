@@ -41,6 +41,7 @@ public class Blank {
     private int status;//状态码
     private int sales;//销量
     private String date;//创建时间
+    private String paymentDate;
 
     /**
      * 垃圾彭狗勇起的名  隔开  丢人
@@ -51,6 +52,57 @@ public class Blank {
     private String  ddzhi;  //订单地址
     private String zt;     //订单状态
     private String phones; //订单电话
+    private String time;  //下单时间
+    private String fkmoney; //付款方式
+    private String times;
+    private String ddzt;   //订单状态
+    private String fhuo;  //发货状态
+    public String getPaymentDate() {
+        return paymentDate;
+    }
+
+    public void setPaymentDate(String paymentDate) {
+        this.paymentDate = paymentDate;
+    }
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getFkmoney() {
+        return fkmoney;
+    }
+
+    public void setFkmoney(String fkmoney) {
+        this.fkmoney = fkmoney;
+    }
+
+    public String getTimes() {
+        return times;
+    }
+
+    public void setTimes(String times) {
+        this.times = times;
+    }
+
+    public String getDdzt() {
+        return ddzt;
+    }
+
+    public void setDdzt(String ddzt) {
+        this.ddzt = ddzt;
+    }
+
+    public String getFhuo() {
+        return fhuo;
+    }
+
+    public void setFhuo(String fhuo) {
+        this.fhuo = fhuo;
+    }
     public String getDdhao() {
         return ddhao;
     }
