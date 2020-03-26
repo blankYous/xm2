@@ -12,18 +12,18 @@
         <meta name="renderer" content="webkit">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <link rel="stylesheet" href="<%--../--%>css/font.css">
-        <link rel="stylesheet" href="<%--../--%>css/xadmin.css">
-        <script src="<%--../--%>js/jquery.min.js"></script>
-        <script src="<%--../--%>lib/layui/layui.js"></script>
-        <script type="text/javascript" src="<%--../--%>js/xadmin.js"></script>
-        <script src="<%--../--%>js/html5-min.js"></script>
-        <script src="<%--../--%>js/respond-min.js"></script>
+        <link rel="stylesheet" href="../css/font.css">
+        <link rel="stylesheet" href="../css/xadmin.css">
+        <script src="../js/jquery.min.js"></script>
+        <script src="../lib/layui/layui.js"></script>
+        <script type="text/javascript" src="../js/xadmin.js"></script>
+        <script src="../js/html5-min.js"></script>
+        <script src="../js/respond-min.js"></script>
 
        <%-- <script src="../js/jquery-1.12.4.js"></script>
 --%>
     </head>
-<%--    <script src="../js/jquery-1.8.3.min.js"></script>
+    <script src="../js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript">
         $(function () {
             setInterval("date.innerHTML=new Date().toLocaleString()",1000);
@@ -32,7 +32,7 @@
                 window.location.href="/bigData";
             }
         })
-    </script>--%>
+    </script>
     <body>
     <div class="x-body layui-anim layui-anim-up">
         <blockquote class="layui-elem-quote">欢迎管理员：
@@ -138,8 +138,8 @@
             </div>
         </div>
     </body>
-    <script src="<%--../--%>lib/layui/layui.js"></script>
-    <script src="<%--../--%>js/jquery-1.8.3.min.js"></script>
+    <script src="../lib/layui/layui.js"></script>
+    <script src="../js/jquery-1.8.3.min.js"></script>
     <script>
         $(function () {
             $(".layui-progress").hover(function () {
