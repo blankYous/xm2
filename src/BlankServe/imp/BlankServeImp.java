@@ -70,8 +70,8 @@ public class BlankServeImp implements BlankServe{
     }
 
     @Override
-    public int updatecount(String name,String color, String userAccount,int shoe) {
-        return blankDao.updatecount(name,color,userAccount,shoe);
+    public int updatecount(int count,String name,String color, String userAccount,int shoe) {
+        return blankDao.updatecount(count,name,color,userAccount,shoe);
     }
     @Override
     public List<Blank> listgwc(String userAccount) {
@@ -163,7 +163,10 @@ public class BlankServeImp implements BlankServe{
     public Blank listName(String name ,String account,String color,int shoe) {
         return blankDao.listName(name,account,color,shoe);
     }
-
+    @Override
+    public Blank listName2(String name ,String account,String color,int shoe) {
+        return blankDao.listName2(name,account,color,shoe);
+    }
     @Override
     public int addCollect(Blank blank) {
         return blankDao.addCollect(blank);
@@ -260,13 +263,13 @@ public class BlankServeImp implements BlankServe{
     }
 
     @Override
-    public List<Blank> selectdsh(String user) {
-        return blankDao.selectdsh(user);
+    public List<Blank> selectdfh(String user) {
+        return blankDao.selectdfh(user);
     }
 
     @Override
-    public List<Blank> selectysh(String user) {
-        return blankDao.selectysh(user);
+    public List<Blank> selectyfh(String user) {
+        return blankDao.selectyfh(user);
     }
 
     @Override
@@ -427,5 +430,15 @@ public Page selectpage(int page, int pagemax) {
     @Override
     public int updateFh(String ddhao) {
         return blankDao.updateFh(ddhao);
+    }
+
+    @Override
+    public int selectSales(int spuId) {
+        return blankDao.selectSales(spuId);
+    }
+
+    @Override
+    public int updateSales(int sales, int spuId) {
+        return blankDao.updateSales(sales,spuId);
     }
 }

@@ -306,7 +306,7 @@
                     })
                     var oneId=$("#id0").text();//第一个地址的id*/
                     $("#insertAddress").click(function () {  //保存新增地址
-                        alert(oneId)
+                       /* alert(oneId)*/
                         var name=$("#nName").val();  //收货人
                         var phone=$("#mobilephone").val();//手机号
                         var  province =$(".province option:selected").text();//省
@@ -396,7 +396,7 @@
                                     tj=date
                                 }
                             })
-                            alert(tj)
+                            /*alert(tj)*/
                             if (tj=="true"){
 
                                 location.href="selectAddress";
@@ -424,7 +424,7 @@
                                         tj = date
                                     }
                                 })
-                                alert(tj)
+                              /*  alert(tj)*/
                                 if (tj == "true") {
                                     location.href = "selectAddress";
                                 }
@@ -450,7 +450,7 @@
 
                     //单击设为默认按钮
                     $(".a-address").click(function () {
-                        alert(1)
+                     /*   alert(1)*/
                         var tj=null;
                         var index=$(".a-address").index(this);
                         var id=$(".a-address:eq("+index+")").parent().parent().parent().next().next().next().next().children("span").text();
@@ -465,7 +465,7 @@
                         })
 
                         if (tj=="true"){
-                            alert(tj)
+                           /* alert(tj)*/
                             location.href="selectAddress";
                         }
                     })

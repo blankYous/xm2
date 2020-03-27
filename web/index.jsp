@@ -305,7 +305,7 @@
 						$("#Search").keydown(function (e) {
 							if(13 === e.keyCode) {
 								var name = $("input[name=Search]").val();
-								alert(name)
+							/*	alert(name)*/
 								if (name!=""){
 									window.open("seek?name="+name)
 									/*window.location.href="seek?name="+name;*/

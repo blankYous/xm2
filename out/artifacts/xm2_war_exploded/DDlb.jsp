@@ -176,22 +176,22 @@
         }
         var dd2=$("#td2 table tr .zt")
         for(var j=0;j<dd2.length;j++){
-            if (dd2.eq(j).html()=="已支付"){
+            if (dd2.eq(j).html()=="未付款"){
                 $("#td2 .butts:eq("+j+")").hide()
             }
         }
-        // var dd3=$("#td3 table tr .zt")
-        // for(var k=0;k<dd3.length;k++){
-        //     if (dd3.eq(k).html()=="已支付"){
-        //         $(".butts:eq("+k+")").hide()
-        //     }
-        // }
-        // var dd4=$("#td4 table tr .zt")
-        // for(var s=0;s<dd4.length;s++){
-        //     if (dd4.eq(s).html()=="已支付"){
-        //         $(".butts:eq("+s+")").hide()
-        //     }
-        // }
+         var dd3=$("#td3 table tr .zt")
+         for(var k=0;k<dd3.length;k++){
+             if (dd3.eq(k).html()=="已支付"){
+                 $(".butts:eq("+k+")").hide()
+             }
+         }
+         var dd4=$("#td4 table tr .zt")
+         for(var s=0;s<dd4.length;s++){
+             if (dd4.eq(s).html()=="已支付"){
+                 $(".butts:eq("+s+")").hide()
+           }
+         }
         var dd5=$("#td5 table tr .zt")
         for(var y=0;y<dd5.length;y++){
             if (dd5.eq(y).html()=="已支付"){

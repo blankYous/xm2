@@ -30,8 +30,14 @@ public class sum extends HttpServlet {
         List<Blank> list2=new ArrayList<Blank>();
         list2=se.selectwzf(user);
         request.setAttribute("list2",list2);
-        //查询待收货的订单号和支付状态
         //查询待发货的订单号和支付状态
+        List<Blank> list3=new ArrayList<Blank>();
+        list2=se.selectdfh(user);
+        request.setAttribute("list3",list3);
+        //查询待收货的订单号和支付状态
+        List<Blank> list4=new ArrayList<Blank>();
+        list2=se.selectyfh(user);
+        request.setAttribute("list4",list4);
         //查询已支付的订单号和支付状态
         List<Blank> list5=new ArrayList<Blank>();
         list5=se.selectyzf(user);

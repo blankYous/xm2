@@ -28,7 +28,7 @@ public interface BlankDao {
     //查询同样鞋子数量
     int selectcount(Blank blank);
     //修改同样鞋子数量
-    int updatecount(String name,String color, String userAccount,int shoe);
+    int updatecount(int count,String name,String color, String userAccount,int shoe);
     //查询购物车数据
     List<Blank>listgwc(String userAccount);
     //删除购物车数据
@@ -66,6 +66,8 @@ public interface BlankDao {
     int updateAddress(int b,int id);
     //根据购物车名称查询所有
     Blank listName(String name ,String account,String color,int shoe);
+    //支付界面商品详情
+    Blank listName2(String name ,String account,String color,int shoe);
     //添加收藏
     int addCollect(Blank blank);
     //查询收藏
@@ -78,10 +80,10 @@ public interface BlankDao {
     List<Blank> selectddhao(String user);
     //查询未支付的订单号
     List<Blank> selectwzf(String user);
-    //查询待收货的订单号
-    List<Blank> selectdsh(String user);
-    //查询已收货的订单号
-    List<Blank> selectysh(String user);
+    //查询待发货的订单号
+    List<Blank> selectdfh(String user);
+    //查询已发货的订单号
+    List<Blank> selectyfh(String user);
     //查询已支付的订单号
     List<Blank> selectyzf(String user);
     //根据查询对应的所有订单信息
@@ -178,4 +180,8 @@ public interface BlankDao {
     int selectcount();
     //发货
     int updateFh(String ddhao);
+    //查询销量
+    int selectSales(int spuId);
+    //修改销量
+    int updateSales(int sales,int spuId);
 }

@@ -40,7 +40,7 @@ public class gwc extends HttpServlet {
 
            BlankServe blankServe = new BlankServeImp();
            int sum =0;
-           Blank bks=new Blank();
+   /*        Blank bks=new Blank();
            bks.setTradeName(name);
            bks.setTradeColor(color);
            bks.setTradeShoe(shoe);
@@ -50,11 +50,11 @@ public class gwc extends HttpServlet {
            bk.setAccount(account);
            bk.setTradeShoe(shoe);
            bk.setTradeColor(color);
-           bk.setTradeName(name);
-           int nm=blankServe.selectcount(bk);
+           bk.setTradeName(name);*/
+           int nm=blankServe.selectcount(blank);
 
            if (nm>0){
-               sum=blankServe.updatecount(name,color,account,shoe);
+               sum=blankServe.updatecount(count,name,color,account,shoe);
                //每次进入只要大于0就相当于增加成功了，并加一
                if (sum > 0) {
                    out.print("true");

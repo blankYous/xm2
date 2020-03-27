@@ -610,7 +610,7 @@
 							$(function () {
 								$(".link-product-add-cart").click(function () {
 									var src=$(this).parent().parent().prev().attr("src");
-									alert(src)
+								/*	alert(src)*/
 									location.href="img?src="+src;
 								})
 							})
@@ -925,7 +925,7 @@
 					async:"false",
 					success:function (data) {
 						if (data=="true"){
-							alert("成功")
+							/*alert("成功")*/
 						}
 					}
 				})

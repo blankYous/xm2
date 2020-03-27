@@ -222,10 +222,10 @@ public class BlankDaoImp extends BaseDao implements BlankDao{
     }
 
     @Override
-    public int updatecount(String name,String color, String userAccount,int shoe) {
+    public int updatecount(int count,String name,String color, String userAccount,int shoe) {
         String sql = "\n" +
-                "update gwc set tradecount=tradecount+1 where tradecolor=? and tradeshoe=? and userAccount=? and tradeName=?";
-        Object[] params = {color,shoe, userAccount,name};
+                "update gwc set tradecount=tradecount+? where tradecolor=? and tradeshoe=? and userAccount=? and tradeName=?";
+        Object[] params = {count,color,shoe, userAccount,name};
         int bk = 0;
         try {
             bk = super.exceuteUpdate(sql, params);
@@ -516,6 +516,26 @@ public class BlankDaoImp extends BaseDao implements BlankDao{
         return bk;
     }
 
+    public Blank listName2(String name,String account,String color,int shoe) {
+        String sql = "SELECT tradeimg,tradeName,tradeprice,tradeshoe,tradecolor,tradecount from gwc  where tradeName=? and userAccount=? and tradecolor=? and tradeshoe=? GROUP BY tradeprice,tradeshoe,tradecolor,tradeimg";
+        Object[] params = {name,account,color,shoe};
+        List<Blank> list = null;
+        Blank bk = new Blank();
+        try {
+            ResultSet rs = super.exceuteQuery(sql, params);
+            rs.next();
+            bk.setTradeImg(rs.getString(1));
+            bk.setTradeName(rs.getString(2));
+            bk.setTradePrice(rs.getInt(3));
+            bk.setTradeShoe(rs.getInt(4));
+            bk.setTradeColor(rs.getString(5));
+           bk.setTradeCount(rs.getInt(6));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bk;
+    }
+
     @Override
     public int addCollect(Blank blank) {
         String sql="INSERT INTO collect(src,title,originalPrice,Price,userAccount) VALUES(?,?,?,?,?)";
@@ -616,8 +636,8 @@ public class BlankDaoImp extends BaseDao implements BlankDao{
     }
 
     @Override
-    public List<Blank> selectdsh(String user) {
-        String sql="select ddhao,zhifzt,price,countm,ddname from zhubiao where userAccount=? and zhifzt='待收货'";
+    public List<Blank> selectdfh(String user) {
+        String sql="select ddhao,zhifzt,price,countm,ddname from zhubiao where userAccount=? and fhuo='未发货'";
         Object[] params={user};
         List<Blank> list=new ArrayList<Blank>();
         try{
@@ -638,8 +658,8 @@ public class BlankDaoImp extends BaseDao implements BlankDao{
     }
 
     @Override
-    public List<Blank> selectysh(String user) {
-        String sql="select ddhao,zhifzt,price,countm,ddname from zhubiao where userAccount=? and zhifzt='已收货'";
+    public List<Blank> selectyfh(String user) {
+        String sql="select ddhao,zhifzt,price,countm,ddname from zhubiao where userAccount=? and fhuo='已发货'";
         Object[] params={user};
         List<Blank> list=new ArrayList<Blank>();
         try{
@@ -763,7 +783,7 @@ public class BlankDaoImp extends BaseDao implements BlankDao{
     }
     @Override
     public int updateDD(String zhifzt,String ddhao,String date,String user,String ddzt) {
-        String sql="update zhubiao set zhifzt=?,ddzt=? ,paymentDate=? where ddhao=? and userAccount=?";
+        String sql="update zhubiao set zhifzt=?,ddzt=?,paymentDate=? where ddhao=? and userAccount=?";
         Object[] params={zhifzt,ddzt,date,ddhao,user};
         int cout=0;
         try{
@@ -802,9 +822,8 @@ public class BlankDaoImp extends BaseDao implements BlankDao{
 
     @Override
     public Blank selectkucun(int size, String color, String title, int price) {
-        String sql="select count,size,colorId,spuId from shoe where size=? and colorId=(select colorId from color where color=?) and spuId\n" +
-                "=(select id from spu where title=? and price=?)";
-        Object[] params={size,color, title,price};
+        String sql="select count,size,colorId,spuId from shoe where size=? and colorId=(select colorId from color where color=?) and spuId=(select id from spu where title=? and price=?)";
+        Object[] params={size,color,title,price};
         int sum=0;
         Blank bk=new Blank();
         try{
@@ -1266,6 +1285,32 @@ public class BlankDaoImp extends BaseDao implements BlankDao{
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return count;
+    }
+
+    @Override
+    public int selectSales(int spuId) {
+        String sql="SELECT sales FROM spu WHERE id=?";
+        Object[] param={spuId};
+        ResultSet rs=null;
+        int sales=-1;
+        try {
+            rs=super.exceuteQuery(sql,param);
+            while (rs.next()){
+                sales=rs.getInt(1);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return sales;
+    }
+
+    @Override
+    public int updateSales(int sales, int spuId) {
+        String sql="UPDATE spu SET sales=?  WHERE id=?";
+        Object[]param={sales,spuId};
+        int count=super.exceuteUpdate(sql,param);
         return count;
     }
 

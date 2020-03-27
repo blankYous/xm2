@@ -194,7 +194,7 @@
 					$(function () {
 						var userName=$("#userName").text();
 						$("#personage").click(function () {
-							alert(userName)
+							/*alert(userName)*/
 							if (userName==""){
 								$("#login").show();
 								$("#login2").show();

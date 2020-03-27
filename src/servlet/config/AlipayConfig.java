@@ -61,10 +61,10 @@ public class AlipayConfig extends HttpServlet {
            AlipayClient alipayClient = new DefaultAlipayClient(gatewayUrl,app_id,merchant_private_key, "json",
                    charset, alipay_public_key,sign_type);
 
-           //设置请求参数
+           //设置请求参数122.51.150.166
            AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
-           alipayRequest.setReturnUrl("http://122.51.150.166:8080/xm2_war_exploded/return_url.jsp");
-           alipayRequest.setNotifyUrl("http://122.51.150.166:8080/xm2_war_exploded/notify_url.jsp");
+           alipayRequest.setReturnUrl("http://localhost:8080/xm2_war_exploded/return_url.jsp");
+           alipayRequest.setNotifyUrl("http://localhost:8080/xm2_war_exploded/notify_url.jsp");
            //商户订单号，商户网站订单系统中唯一订单号，必填
            String out_trade_no = new String(request.getParameter("WIDout_trade_no").getBytes("ISO-8859-1"),"UTF-8");
            //付款金额，必填

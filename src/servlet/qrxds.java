@@ -26,19 +26,19 @@ public class qrxds extends HttpServlet {
            BlankServe se = new BlankServeImp();
            int countm=Integer.parseInt(request.getParameter("countm"));
            String ddhao = request.getParameter("ddhao");
-           System.out.println(ddhao);
+          /* System.out.println(ddhao);*/
            String ddname = request.getParameter("ddname");
-           System.out.println(ddname);
+          /* System.out.println(ddname);*/
            int ddprice = Integer.parseInt(request.getParameter("ddprice"));
-           System.out.println(ddprice);
+          /* System.out.println(ddprice);*/
            String ddphone = request.getParameter("ddphone");
-           System.out.println(ddphone);
+          /* System.out.println(ddphone);*/
            String ddzhi = request.getParameter("ddzhi");
-           System.out.println(ddzhi);
+         /*  System.out.println(ddzhi);*/
            String time=request.getParameter("time");
-           System.out.println(time);
+           /*System.out.println(time);*/
            String jsons = request.getParameter("jsons");
-           System.out.println(jsons);
+          /* System.out.println(jsons)*/;
            List<Blank> list = new ArrayList<Blank>();
            JSONArray ar = JSON.parseArray(jsons);  //将传过来的json格式数组字符串转换为jsonArry数组对象
            String jsoncolor=request.getParameter("colors");
@@ -61,13 +61,14 @@ public class qrxds extends HttpServlet {
            nk.setDdzt("未确定");
            nk.setFhuo("未发货");
            int cu = se.insertDDxxi(nk);
+
            String account=(String) request.getServletContext().getAttribute("user"); //获取账号
            for (int i = 0; i < ar.size(); i++) {
                String name = ar.getString(i);    //循环取出每个jsonarry的值
                String color=co.getString(i);
                int shoe=sh.getInteger(i);
                Blank bk = new Blank();
-               bk = se.listName(name,account,color,shoe);
+               bk = se.listName2(name,account,color,shoe);
                Blank bks = new Blank();
                bks.setDdhao(ddhao);
                bks.setTradeName(bk.getTradeName());
@@ -78,31 +79,41 @@ public class qrxds extends HttpServlet {
                bks.setTradeImg(bk.getTradeImg());
                list.add(bks);
            }
+           /*System.out.println("我是cu"+cu);*/
            if (cu > 0) {
                out.print(1);
+              /* System.out.println(list.size());*/
                for (int j = 0; j < list.size(); j++) {
                    int cou = se.insertDDbiao(list.get(j));
                    Blank bks=new Blank();
                    bks=se.selectkucun(list.get(j).getTradeShoe(),list.get(j).getTradeColor(),list.get(j).getTradeName()
                            ,list.get(j).getTradePrice());
                    int kucun=bks.getTradeCounts();
-                   System.out.println("库存1"+kucun);
-                   kucun=kucun-list.get(j).getTradeCounts();
-                   System.out.println("库存2"+kucun);
+                   /*System.out.println("库存1"+kucun);*/
+                   kucun=kucun-list.get(j).getTradeCount();
+                  /* System.out.println(list.get(j).getTradeCount());
+                   System.out.println("库存2"+kucun);*/
                    Blank km=new Blank();
                    km.setTradeCounts(kucun);
                    km.setTradeShoe(bks.getTradeShoe());
                    km.setTradeColor(bks.getTradeColor());
                    km.setTradeId(bks.getTradeId());
                    int gh=se.updatekucun(km);
-                   System.out.println("测试"+gh);
+                   /*System.out.println("测试"+gh);*/
+                   //添加销量
+                   int sales=se.selectSales(bks.getTradeId());//先获取之前的销量
+                   int sum=se.updateSales(sales+list.get(j).getTradeCount(),bks.getTradeId());
                }
+
+               //购物车删除
                for (int i = 0; i < ar.size(); i++) {
                    String name = ar.getString(i);    //循环取出每个jsonarry的值
                    int size=Integer.parseInt(sh.getString(i));
                    String color=co.getString(i);
-                   se.deletegwcs(name,size,color,account);
+                   int a= se.deletegwcs(name,size,color,account);
                }
+           }else{
+               out.print(2);
            }
        }
 }

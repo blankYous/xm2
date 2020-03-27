@@ -308,6 +308,8 @@
 	<link href="http://fonts.googleapis.com/css?family=Montserrat:100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
 		  rel="stylesheet">
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <style>
 	#cg{
@@ -429,7 +431,7 @@
 </style>
 <body style="position: relative">
 <div id="xxhh">
-	<h5 align="center"  style="margin-top:20px">请您选择要结算的商品哦</h5>
+	<h5 align="center"  style="margin-top:20px">请您选择要结算的商品........或者商品库存为0</h5>
 </div>
 <div id="cgs" style="position:absolute;background-color: #000000;opacity: 0.5;z-index: 998;height: 100%;width: 100%;display: none">
 </div>
@@ -510,7 +512,7 @@
 						var userName=$("#userName").text();
 						$("#personage").click(function () {
 							<%--		var userName="<%request.getParameter("user");%>";--%>
-							alert(userName)
+						/*	alert(userName)*/
 							if (userName==""){
 								$("#login").show();
 								$("#login2").show();
@@ -539,11 +541,12 @@
 										tj=date
 									}
 								})
-								alert(tj)
+								/*alert(tj)*/
 								if (tj.trim()==user){
 									$("#login").hide();
 									$("#login2").hide();
 									$("#userName").html(user);
+									location.reload();
 								}else if (tj.trim()=="dj"){
 									$("#span").html("账号已被冻结");
 									$("#p").show();
@@ -613,8 +616,9 @@
 							</td>
 							<td class="invert-image" width="35%" ><a href="img?src=${list.tradeImg}"><img src="${list.tradeImg}"  alt="" class="img-responsive"></a></td>
 							<td class="invert" width="30%"><span class="na">${list.tradeName}</span><br/>
-								<span class="color">${list.tradeColor}</span>;
-								<span class="xiema">${list.tradeShoe}</span>
+								<p>颜色：<span class="color">${list.tradeColor}</span></p>
+								<p>鞋码：<span class="xiema">${list.tradeShoe}</span></p>
+								<p>鞋库库存：<span class="count">${listCount.get(varStatus.index).getTradeCounts()}</span></p>
 							</td>
 							<td class="invert">
 								<div class="quantity">
@@ -632,14 +636,15 @@
 								</div>
 							</td>
 						</tr>
+
 					</c:forEach>
 					</tbody>
 				</table>
 				<div id="sh-sh" style="height: 200px;width: 100%;border: 1px solid #cecece">
 					<input type="hidden" name="cmd" value="_cart">
 					<input type="hidden" name="display" value="1">
-						<i class="fa fa-cart-arrow-down" style="margin-left:45%;;margin-top:60px;font-size: 60px" aria-hidden="true"></i>
-					<a href="#">你还没有商品...</a>
+						<i class="fa fa-shopping-cart fa-4x" style="margin-left:45%;;margin-top:60px;font-size: 60px" aria-hidden="true"></i>
+					<a href="index.jsp">你还没有商品...</a>
 				</div>
 			</div>
 			<div class="checkout-left">
@@ -677,6 +682,10 @@
 								if ($(".rem .checkbox:eq(" + i + ")").prop("checked")){
 									counts++;
 								}
+								if ($(".rem .checkbox:eq(" + i + ") .count").text()==0){
+									counts=0;
+									break;
+								}
 							}
 							if ($("#ta tr").length>0) {
 								if (counts>0) {
@@ -706,14 +715,23 @@
 											++s;
 										}
 									}
+									var  jsonCount=new Array();
+									var g=0;
+									for (var i = 0; i < lr; i++) {
+										if ($(".rem .checkbox:eq(" + i + ")").prop("checked")) {
+											jsonCount[g] = document.getElementsByClassName("namecount")[i].innerHTML;
+											++g;
+										}
+									}
+
+									var counts=JSON.stringify(jsonCount)
 									var jsons=JSON.stringify(namejson);
 									var colors=JSON.stringify(jsoncolor);
 									var shoes=JSON.stringify(jsonshoe);
-									alert(jsons)
-									location.href="jsonName?jsons="+encodeURIComponent(jsons)+"&zji="+zji+"&colors="+encodeURIComponent(colors)+"&shoes="+encodeURIComponent(shoes);
+									location.href="jsonName?jsons="+encodeURIComponent(jsons)+"&zji="+zji+"&colors="+encodeURIComponent(colors)+"&shoes="+encodeURIComponent(shoes)+"&counts="+encodeURIComponent(counts);
 								} else {
-									$("#xxhh").fadeIn(600);
-									$("#xxhh").fadeOut(600);
+									$("#xxhh").fadeIn(2000);
+									$("#xxhh").fadeOut(2000);
 								}
 							}
 						})

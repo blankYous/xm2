@@ -39,7 +39,7 @@
 	 var pass=$("#password").val();
 	 if(name=="admin" && pass=="admin")
 	 {
-	  alert("登录成功！");
+	 /* alert("登录成功！");*/
          $("#user_name").val("");
 	  $("#password").val("");
        $(location).attr('href', 'indexht.jsp?name='+name);
@@ -59,7 +59,7 @@
 		var email = $("#r_email").val();
 		if(name!="" && pass=="" && email != "")
 		 {
-		  alert("注册成功！");
+		/*  alert("注册成功！");*/
 		  $("#user_name").val("");
 		  $("#password").val("");
 		 }

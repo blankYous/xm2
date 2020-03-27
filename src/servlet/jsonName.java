@@ -37,8 +37,7 @@ public class jsonName extends HttpServlet {
             String color=co.getString(i);
             int shoe=sh.getInteger(i);
             Blank bk = new Blank();
-            bk = se.listName(name,account,color,shoe);
-            System.out.println(bk.getTradeName());
+            bk = se.listName2(name,account,color,shoe);
             list.add(bk);
         }
         List<Blank> list1 =new ArrayList<Blank>();

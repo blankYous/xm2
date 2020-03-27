@@ -452,7 +452,7 @@
 						<td  class="spname">${list.tradeName}</td>
 						<td>
 							价格: <span>${list.tradePrice}</span>, 鞋码：<span class="xiemas">${list.tradeShoe}</span>
-							,颜色: <span class="colors">${list.tradeColor}</span>, 数量: <span class="countm">${list.tradeCounts}</span>
+							,颜色: <span class="colors">${list.tradeColor}</span>, 数量: <span class="countm">${list.tradeCount}</span>
 						</td>
 						<td>快递 免邮</td>
 					</tr>
@@ -603,7 +603,7 @@
 												//判断有无地址
 												$(function () {
 													var fosdzhi=${list1.get(0).id}
-													alert(fosdzhi)
+													/*alert(fosdzhi)*/
 													if (fosdzhi<=0){
 														$("#fomss").hide()
                                                           $("#dz-xz").hide();
